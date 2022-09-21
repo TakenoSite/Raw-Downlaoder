@@ -87,7 +87,7 @@ static int UrlSplit(int port){
 		}
 	}
 	
-	for(i; i<10; i++){
+	for(i; i<10; i++){ // patch dept
 		if(path[i] !=NULL){
 			edit = (char*)malloc(strlen(path[i])*sizeof(path[i]));
 			sprintf(edit, "/%s", path[i]);
