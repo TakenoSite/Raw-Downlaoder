@@ -130,7 +130,8 @@ int downloader(char *url,int port, char* filename)
     if(send(socket_d , request_header , strlen(request_header) , 0) < 0){
 		puts("send error");
 	};
-    remove(filename);
+    
+	
     file = fopen(filename, "ab");
 	
 	while(1){
@@ -166,7 +167,8 @@ int downloader(char *url,int port, char* filename)
 				
 				free(request_header);
 				close(socket_d);
-
+				fclose(file);
+				
 				count      = 0;
 				byte_count = 0;
 
@@ -178,6 +180,7 @@ int downloader(char *url,int port, char* filename)
 				
 				free(request_header);
 				close(socket_d);
+				fclose(file);
 
 				count      = 0;
 				byte_count = 0;
