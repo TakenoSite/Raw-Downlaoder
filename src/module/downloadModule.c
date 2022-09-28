@@ -124,10 +124,12 @@ int downloader(char *url,int port, char* filename)
     server.sin_port = htons(port);
 
     if(connect(socket_d , (struct sockaddr *)&server , sizeof(server)) < 0){
+	    	return 1;
 		puts("can not conection");
 	}	
 
     if(send(socket_d , request_header , strlen(request_header) , 0) < 0){
+	    	return 1;
 		puts("send error");
 	};
     
