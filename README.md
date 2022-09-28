@@ -1,6 +1,13 @@
-# Raw-Downlaoder
+# How to Build 
 
-1:Donwload()
+	setup.sh
+
+# How to Server Start
+
+	server_run.sh
+
+# Raw-Downlaoder
+## 1:Donwload()
 
 			
 
@@ -10,7 +17,7 @@
 
 
 
-## comment
+# Depeloper Comment
 
 status is 404, edit the HttpRequestHeader Please
 
