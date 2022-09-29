@@ -69,7 +69,6 @@ static int UrlSplit(int port){
 	char *url_ptr = strtok(URL_BUF, "/");
 	int url_count = 0;
 	char *edit;
-	int i= 0;
 	
 	if(strcmp(url_ptr, "http:") == 0 || strcmp(url_ptr, "https:") == 0){
 		puts("no http and https please ");
@@ -87,7 +86,7 @@ static int UrlSplit(int port){
 		}
 	}
 	
-	for(i; i<10; i++){ // patch dept
+	for(int i=0; i<10; i++){ // patch dept
 		if(path[i] !=NULL){
 			edit = (char*)malloc(strlen(path[i])*sizeof(path[i]));
 			sprintf(edit, "/%s", path[i]);
