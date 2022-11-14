@@ -137,22 +137,20 @@ int downloader(char *url,int port, char* filename)
 	
 	while(1){
 		int responsed = recv(socket_d,server_reply,sizeof server_reply,0);	
-		if(count < 2){//Magic
-			if(count){
-				if(sizeof(HeaderBuf) > strlen(server_reply)){
-					strcpy(HeaderBuf, server_reply);	
-				}else{
-					puts("header buffor over");
-					return 2;
-				}
-				
-				HeaderSplit("Content-Length");  
-				Header_to_Data = strstr(server_reply, "\r\n\r\n");
-				diff =&Header_to_Data[4] - server_reply;
-				if(Header_to_Data != NULL){
-					byte_count += responsed - diff; 
-					fwrite(&Header_to_Data[4], responsed - diff, 1, file);
-				}
+		if(count < 2){
+			if(sizeof(HeaderBuf) > strlen(server_reply)){
+				strcpy(HeaderBuf, server_reply);	
+			}else{
+				puts("header buffor over");
+				return 2;
+			}
+			
+			HeaderSplit("Content-Length");  
+			Header_to_Data = strstr(server_reply, "\r\n\r\n");
+			diff =&Header_to_Data[4] - server_reply;
+			if(Header_to_Data != NULL){
+				byte_count += responsed - diff; 
+				fwrite(&Header_to_Data[4], responsed - diff, 1, file);
 			}
 		}
 
